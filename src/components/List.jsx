@@ -1,7 +1,11 @@
-import React from "react";
+import styled from "styled-components";
 
 const List = () => {
-  return <div>List</div>;
+  return <StyledList>List</StyledList>;
 };
-
+const StyledList = styled.section`
+  background-color: #d3d3d3;
+  border-radius: 16px;
+  padding: 20px;
+`;
 export default List;
