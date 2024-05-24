@@ -8,7 +8,6 @@ const StyledMain = styled.div`
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: #286b39;
 `;
 
 export default Layout;

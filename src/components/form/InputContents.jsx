@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const InputContents = ({ label, type }) => {
+const InputContents = ({ label, type, value, onChange }) => {
   return (
     <StyledInputContents>
       <StyledLabel>{label}</StyledLabel>
-      <StyledInput type={type} />
+      <StyledInput type={type} value={value} onChange={onChange} />
     </StyledInputContents>
   );
 };

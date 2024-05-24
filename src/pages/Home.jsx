@@ -5,13 +5,13 @@ import Form from "../components/Form";
 import styled from "styled-components";
 import SpendingChart from "../components/SpendingChart";
 
-const Home = () => {
+const Home = ({ books, setBooks }) => {
   return (
     <StyledHome>
-      <Form />
+      <Form books={books} setBooks={setBooks} />
       <Calendars />
       <SpendingChart />
-      <List />
+      <List books={books} />
     </StyledHome>
   );
 };
