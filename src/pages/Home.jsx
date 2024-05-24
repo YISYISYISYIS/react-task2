@@ -3,12 +3,14 @@ import Calendars from "../components/Calendars";
 import List from "../components/List";
 import Form from "../components/Form";
 import styled from "styled-components";
+import SpendingChart from "../components/SpendingChart";
 
 const Home = () => {
   return (
     <StyledHome>
       <Form />
       <Calendars />
+      <SpendingChart />
       <List />
     </StyledHome>
   );
