@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const InputContents = () => {
+const InputContents = ({ label, type }) => {
   return (
     <StyledInputContents>
-      <label>InputContents</label>
-      <input type="text" />
+      <label>{label}</label>
+      <input type={type} />
     </StyledInputContents>
   );
 };

@@ -1,18 +1,15 @@
 import styled from "styled-components";
-import InputDate from "./form/InputDate";
 import InputContents from "./form/InputContents";
-import InputPrice from "./form/InputPrice";
-import InputList from "./form/InputList";
 import FormButton from "./form/FormButton";
 
 const Form = () => {
   return (
     <StyledForm>
       <StyledFormInner>
-        <InputDate />
-        <InputList />
-        <InputPrice />
-        <InputContents />
+        <InputContents label="날짜" type="date" />
+        <InputContents label="항목" type="text" />
+        <InputContents label="금액" type="number" />
+        <InputContents label="내용" type="text" />
         <FormButton />
       </StyledFormInner>
     </StyledForm>
