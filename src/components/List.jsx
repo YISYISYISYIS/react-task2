@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const List = ({ books, setBooks }) => {
+const List = ({ filteredBooks }) => {
   // console.log(books);
   return (
     <StyledList>
       <StyledListInner>
-        {books.map((book) => (
+        {filteredBooks.map((book) => (
           <StyledListItem key={book.id}>
             <Link state={{ book }} to={`/detail/${book.id}`}>
+              {book.date}
               {book.item}
+              {book.description}
+              {book.amount}
             </Link>
           </StyledListItem>
         ))}
@@ -38,4 +41,25 @@ const StyledListItem = styled.li`
   transition: transform 0.2s ease-in-out 0s;
   cursor: pointer;
 `;
+const StyledListItempiece = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  & > :first-child {
+    margin-bottom: 5px;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+  }
+  & > :last-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+`;
+
 export default List;

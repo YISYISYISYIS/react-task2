@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Calendars from "../components/Calendars";
 import List from "../components/List";
 import Form from "../components/Form";
@@ -6,12 +6,14 @@ import styled from "styled-components";
 import SpendingChart from "../components/SpendingChart";
 
 const Home = ({ books, setBooks }) => {
+  const [filteredBooks, setFilteredBooks] = useState(books);
+
   return (
     <StyledHome>
       <Form books={books} setBooks={setBooks} />
-      <Calendars />
+      <Calendars books={books} setFilteredBooks={setFilteredBooks} />
       <SpendingChart books={books} />
-      <List books={books} />
+      <List filteredBooks={filteredBooks} />
     </StyledHome>
   );
 };
