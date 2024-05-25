@@ -10,7 +10,7 @@ const Home = ({ books, setBooks }) => {
     <StyledHome>
       <Form books={books} setBooks={setBooks} />
       <Calendars />
-      <SpendingChart />
+      <SpendingChart books={books} />
       <List books={books} />
     </StyledHome>
   );
