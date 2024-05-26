@@ -16,6 +16,11 @@ const List = ({ filteredBooks }) => {
             </Link>
           </StyledListItem>
         ))}
+        {filteredBooks.length === 0 && (
+          <StyledListItem>
+            <p>항목이 없습니다</p>
+          </StyledListItem>
+        )}
       </StyledListInner>
     </StyledList>
   );

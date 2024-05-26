@@ -1,20 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import InputContents from "./form/InputContents";
 import FormButton from "./form/FormButton";
 
-const Form = ({ setBooks }) => {
-  const [date, setDate] = useState("");
+const Form = ({ setBooks, selectedMonth }) => {
+  const [date, setDate] = useState(`2024-${selectedMonth}-01`);
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
   const [item, setItem] = useState("");
 
+  useEffect(() => {
+    setDate(`2024-${selectedMonth}-01`);
+  }, [selectedMonth]);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    if (!date.trim() || !description.trim() || !amount.trim() || !item.trim()) {
+    const validDate = (date) => {
+      if (date.split("-")[1].length === 0) {
+        return false;
+      }
+      return true;
+    };
+
+    if (
+      !validDate(date) ||
+      !description.trim() ||
+      !amount.trim() ||
+      !item.trim()
+    ) {
       return alert("항목을 모두 입력해주세요.");
+    } else if (amount <= 0) {
+      return alert("유효한 금액을 입력하세요");
     }
+
     const newBooks = {
       id: crypto.randomUUID(),
       date,
@@ -28,7 +47,7 @@ const Form = ({ setBooks }) => {
     console.log("Description:", description);
     setBooks((prev) => [...prev, newBooks]);
 
-    setDate("");
+    setDate(`2024-${selectedMonth}-01`);
     setDescription("");
     setAmount("");
     setItem("");

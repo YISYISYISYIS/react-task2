@@ -7,11 +7,17 @@ import SpendingChart from "../components/SpendingChart";
 
 const Home = ({ books, setBooks }) => {
   const [filteredBooks, setFilteredBooks] = useState(books);
+  const [selectedMonth, setSelectedMonth] = useState("");
 
   return (
     <StyledHome>
-      <Form books={books} setBooks={setBooks} />
-      <Calendars books={books} setFilteredBooks={setFilteredBooks} />
+      <Form setBooks={setBooks} selectedMonth={selectedMonth} />
+      <Calendars
+        books={books}
+        setFilteredBooks={setFilteredBooks}
+        setSelectedMonth={setSelectedMonth}
+        selectedMonth={selectedMonth}
+      />
       <SpendingChart books={books} />
       <List filteredBooks={filteredBooks} />
     </StyledHome>
