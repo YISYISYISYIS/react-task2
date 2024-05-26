@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const FormButton = ({ buttonText, color }) => {
+const FormButton = ({ buttonText, color, type, onClick }) => {
   return (
-    <StyledFormButton type="submit" color={color}>
+    <StyledFormButton type={type} color={color} onClick={onClick}>
       {buttonText}
     </StyledFormButton>
   );

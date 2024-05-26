@@ -8,7 +8,10 @@ const Router = ({ books, setBooks }) => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home books={books} setBooks={setBooks} />} />
-        <Route path="/Detail/:id" element={<Detail setBooks={setBooks} />} />
+        <Route
+          path="/Detail/:id"
+          element={<Detail books={books} setBooks={setBooks} />}
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -80,7 +80,7 @@ const Form = ({ setBooks, selectedMonth }) => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <FormButton buttonText="저장" color="rgb(0, 123, 255)" />
+        <FormButton type="submit" buttonText="저장" color="rgb(0, 123, 255)" />
       </StyledFormInner>
     </StyledForm>
   );
