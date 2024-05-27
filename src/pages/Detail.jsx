@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useRef } from "react";
 import InputContents from "../components/form/InputContents";
 import styled from "styled-components";
 import Layout from "../components/Layout";
@@ -11,26 +11,27 @@ const Detail = ({ setBooks }) => {
   const { book } = location.state;
 
   // console.log(location);
-  const [date, setDate] = useState(book.date);
-  const [description, setDescription] = useState(book.description);
-  const [amount, setAmount] = useState(book.amount);
-  const [item, setItem] = useState(book.item);
+  const dataRef = useRef(book.date);
+  const descriptionRef = useRef(book.description);
+  const amountRef = useRef(book.amount);
+  const itemREf = useRef(book.item);
 
   // console.log(amount);
 
   const onClickInputChange = () => {
     const newBook = {
       id: book.id,
-      date,
-      description,
-      amount,
-      item,
+      date: dataRef.current.value,
+      description: descriptionRef.current.value,
+      amount: amountRef.current.value,
+      item: itemREf.current.value,
     };
     const isConfirm = confirm("수정 하시겠습니까?");
     if (isConfirm) {
       setBooks((prev) =>
         prev.map((prevBook) => (prevBook.id === book.id ? newBook : prevBook))
       );
+      navigate("/");
     }
   };
 
@@ -52,26 +53,26 @@ const Detail = ({ setBooks }) => {
         <InputContents
           label="날짜"
           type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+          ref={dataRef}
+          defaultValue={book.date}
         />
         <InputContents
           label="항목"
           type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          ref={descriptionRef}
+          defaultValue={book.description}
         />
         <InputContents
           label="금액"
           type="number"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          ref={amountRef}
+          defaultValue={book.amount}
         />
         <InputContents
           label="내용"
           type="text"
-          value={item}
-          onChange={(e) => setItem(e.target.value)}
+          ref={itemREf}
+          defaultValue={book.item}
         />
         <StyledFormButton>
           <FormButton
