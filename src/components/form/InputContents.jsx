@@ -1,13 +1,22 @@
 import styled from "styled-components";
+import { forwardRef } from "react";
 
-const InputContents = ({ label, type }) => {
-  return (
-    <StyledInputContents>
-      <StyledLabel>{label}</StyledLabel>
-      <StyledInput type={type} />
-    </StyledInputContents>
-  );
-};
+const InputContents = forwardRef(
+  ({ label, type, value, onChange, defaultValue }, ref) => {
+    return (
+      <StyledInputContents>
+        <StyledLabel>{label}</StyledLabel>
+        <StyledInput
+          type={type}
+          value={value}
+          onChange={onChange}
+          defaultValue={defaultValue}
+          ref={ref}
+        />
+      </StyledInputContents>
+    );
+  }
+);
 const StyledInputContents = styled.div`
   display: flex;
   flex-direction: column;
