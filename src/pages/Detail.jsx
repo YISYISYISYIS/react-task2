@@ -26,16 +26,20 @@ const Detail = ({ setBooks }) => {
       amount,
       item,
     };
-
-    setBooks((prev) =>
-      prev.map((prevBook) => (prevBook.id === book.id ? newBook : prevBook))
-    );
+    const isConfirm = confirm("수정 하시겠습니까?");
+    if (isConfirm) {
+      setBooks((prev) =>
+        prev.map((prevBook) => (prevBook.id === book.id ? newBook : prevBook))
+      );
+    }
   };
 
   const onClickDelete = () => {
-    alert("삭제하시겠습니까?");
-    setBooks((prev) => prev.filter((prevBook) => prevBook.id !== book.id));
-    navigate("/");
+    const isConfirm = confirm("삭제 하시겠습니까?");
+    if (isConfirm) {
+      setBooks((prev) => prev.filter((prevBook) => prevBook.id !== book.id));
+      navigate("/");
+    }
   };
 
   const onClickBack = () => {

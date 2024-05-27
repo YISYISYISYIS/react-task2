@@ -8,12 +8,12 @@ const List = ({ filteredBooks }) => {
       <StyledListInner>
         {filteredBooks.map((book) => (
           <StyledListItem key={book.id}>
+            {book.date}
             <Link state={{ book }} to={`/detail/${book.id}`}>
-              {book.date}
               {book.item}
               {book.description}
-              {book.amount}
             </Link>
+            {book.amount}
           </StyledListItem>
         ))}
         {filteredBooks.length === 0 && (
@@ -35,7 +35,7 @@ const StyledListInner = styled.div`
   flex-direction: column;
   gap: 10px;
 `;
-const StyledListItem = styled.li`
+const StyledListItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,26 +45,6 @@ const StyledListItem = styled.li`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
   transition: transform 0.2s ease-in-out 0s;
   cursor: pointer;
-`;
-const StyledListItempiece = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  flex-grow: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  & > :first-child {
-    margin-bottom: 5px;
-    color: rgb(102, 102, 102);
-    font-size: 14px;
-  }
-  & > :last-child {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-  }
 `;
 
 export default List;

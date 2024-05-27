@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import CalendarButton from "./calendars/CalendarButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Calendars = ({
   books,
@@ -9,17 +9,27 @@ const Calendars = ({
   selectedMonth,
 }) => {
   // const [isColorActive, setIsColorActive] = useState(false);
+  useEffect(() => {
+    const savedMonth = localStorage.getItem("selectedMonth");
+    if (savedMonth) {
+      setSelectedMonth(savedMonth);
+      filteredBooks(savedMonth);
+    }
+  }, []);
 
   const onClickCalendarButton = (month) => {
     // setIsColorActive(month);
     setSelectedMonth(month);
 
+    localStorage.setItem("selectedMonth", month);
+    filteredBooks(month);
+    // console.log(filteredBooks);
+  };
+  const filteredBooks = (month) => {
     const filteredBooksDate = books.filter((book) =>
       book.date.split("-")[1].includes(month)
     );
-
     setFilteredBooks(filteredBooksDate);
-    // console.log(filteredBooks);
   };
   return (
     <StyledCalendars>
