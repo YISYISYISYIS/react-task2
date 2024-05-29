@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import CalendarButton from "./calendars/CalendarButton";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { BooksContext } from "../constext/BooksProvider";
+import { FilteredContext } from "../constext/FilteredProvider";
 
-const Calendars = ({
-  books,
-  setFilteredBooks,
-  setSelectedMonth,
-  selectedMonth,
-}) => {
-  // const [isColorActive, setIsColorActive] = useState(false);
+const Calendars = () => {
+  const { books } = useContext(BooksContext);
+  const { setFilteredBooks, setSelectedMonth, selectedMonth } =
+    useContext(FilteredContext);
+
   useEffect(() => {
     const savedMonth = localStorage.getItem("selectedMonth");
     if (savedMonth) {
@@ -18,12 +18,10 @@ const Calendars = ({
   }, []);
 
   const onClickCalendarButton = (month) => {
-    // setIsColorActive(month);
     setSelectedMonth(month);
 
     localStorage.setItem("selectedMonth", month);
     filteredBooks(month);
-    // console.log(filteredBooks);
   };
   const filteredBooks = (month) => {
     const filteredBooksDate = books.filter((book) =>

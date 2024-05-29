@@ -1,8 +1,8 @@
-import { useState } from "react";
 import Router from "./router/Router";
 import GlobalStyles from "./GlobalStyles";
 import Layout from "./components/Layout";
-import data from "./data/data";
+import BooksProvider from "./constext/BooksProvider";
+
 //필요한 state
 //1.가계부 배열 (완료)
 //2.월별 정보
@@ -12,15 +12,13 @@ import data from "./data/data";
 //리스트클릭시 주소에 id넣어서 이동
 
 const App = () => {
-  const [books, setBooks] = useState(data);
-
   return (
-    <>
+    <BooksProvider>
       <GlobalStyles />
       <Layout>
-        <Router books={books} setBooks={setBooks} />
+        <Router />
       </Layout>
-    </>
+    </BooksProvider>
   );
 };
 

@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { FilteredContext } from "../constext/FilteredProvider";
 
-const List = ({ filteredBooks }) => {
+const List = () => {
+  const { filteredBooks } = useContext(FilteredContext);
   // console.log(books);
   return (
     <StyledList>
@@ -25,6 +28,7 @@ const List = ({ filteredBooks }) => {
     </StyledList>
   );
 };
+
 const StyledList = styled.section`
   background-color: #d3d3d3;
   border-radius: 16px;

@@ -1,22 +1,22 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import InputContents from "../components/form/InputContents";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import FormButton from "../components/form/FormButton";
+import { BooksContext } from "../constext/BooksProvider";
 
-const Detail = ({ setBooks }) => {
+const Detail = () => {
+  const { setBooks } = useContext(BooksContext);
+
   const location = useLocation();
   const navigate = useNavigate();
   const { book } = location.state;
 
-  // console.log(location);
   const dataRef = useRef(book.date);
   const descriptionRef = useRef(book.description);
   const amountRef = useRef(book.amount);
   const itemREf = useRef(book.item);
-
-  // console.log(amount);
 
   const onClickInputChange = () => {
     const newBook = {

@@ -1,9 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import InputContents from "./form/InputContents";
 import FormButton from "./form/FormButton";
+import { BooksContext } from "../constext/BooksProvider";
+import { FilteredContext } from "../constext/FilteredProvider";
 
-const Form = ({ setBooks, selectedMonth }) => {
+const Form = () => {
+  const { setBooks } = useContext(BooksContext);
+  const { selectedMonth } = useContext(FilteredContext);
+
   const [date, setDate] = useState(`2024-${selectedMonth}-01`);
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
