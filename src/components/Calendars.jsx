@@ -1,13 +1,18 @@
 import styled from "styled-components";
 import CalendarButton from "./calendars/CalendarButton";
 import { useEffect, useContext } from "react";
-import { BooksContext } from "../constext/BooksProvider";
+// import { BooksContext } from "../constext/BooksProvider";
 import { FilteredContext } from "../constext/FilteredProvider";
+import { useSelector, useDispatch } from "react-redux";
 
 const Calendars = () => {
-  const { books } = useContext(BooksContext);
-  const { setFilteredBooks, setSelectedMonth, selectedMonth } =
-    useContext(FilteredContext);
+  // const { books } = useContext(BooksContext);
+  const { books, selectedMonth, filteredBooks } = useSelector(
+    (state) => state.books
+  );
+
+  // const { setFilteredBooks, setSelectedMonth, selectedMonth } =
+  //   useContext(FilteredContext);
 
   useEffect(() => {
     const savedMonth = localStorage.getItem("selectedMonth");
